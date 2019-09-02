@@ -350,51 +350,59 @@ ini_set("soap.wsdl_cache_enabled", "0");
       return $this->UnitID;
     }
 
+    private $SenderAccountAddressId;
+    public function set_SenderAccountAddressId($SenderAccountAddressId){
+      $this->SenderAccountAddressId = $SenderAccountAddressId;
+    }
+    public function get_SenderAccountAddressId(){
+      return $this->SenderAccountAddressId;
+    }
+
     public function generate($username,$password){
-      $request ="<Order>
+      $this->request ="<Order>
       <UserName>".$username."</UserName>
       <Password>".$password."</Password>
-      <TradingWaybillNumber>".$TradingWaybillNumber."</TradingWaybillNumber>
-      <InvoiceNumber>".$InvoiceNumber."</InvoiceNumber>
-      <ReceiverName>".$ReceiverName."</ReceiverName>
-      <ReceiverAddress>".$ReceiverAddress."</ReceiverAddress>
-      <ReceiverPhone1>".$ReceiverPhone1."</ReceiverPhone1>
-      <ReceiverPhone2>".$ReceiverPhone2."</ReceiverPhone2>
-      <ReceiverPhone3>".$ReceiverPhone3."</ReceiverPhone3>
-      <ReceiverCityName>".$ReceiverCityName."</ReceiverCityName>
-      <ReceiverTownName>".$ReceiverTownName."</ReceiverTownName>
-      <VolumetricWeight>".$VolumetricWeight."</VolumetricWeight>
-      <Weight>".$Weight."</Weight>
-      <PieceCount>".$PieceCount."</PieceCount>
-      <SpecialField1>".$SpecialField1."</SpecialField1>
-      <SpecialField2>".$SpecialField2."</SpecialField2>
-      <SpecialField3>".$SpecialField3."</SpecialField3>
-      <CodAmount>".$CodAmount."</CodAmount>
-      <CodCollectionType>".$CodCollectionType."</CodCollectionType>
-      <CodBillingType>".$CodBillingType."</CodBillingType>
-      <IntegrationCode>".$IntegrationCode."</IntegrationCode>
-      <Description>".$Description."</Description>
-      <TaxNumber>".$TaxNumber."</TaxNumber>
-      <TtDocumentId>".$TtDocumentId."</TtDocumentId>
-      <TaxOffice>".$TaxOffice."</TaxOffice>
-      <PrivilegeOrder>".$PrivilegeOrder."</PrivilegeOrder>
-      <Country>".$Country."</Country>
-      <CountryCode>".$CountryCode."</CountryCode>
-      <CityCode>".$CityCode."</CityCode>
-      <TownCode>".$TownCode."</TownCode>
-      <ReceiverDistrictName>".$ReceiverDistrictName."</ReceiverDistrictName>
-      <ReceiverQuarterName>".$ReceiverQuarterName."</ReceiverQuarterName>
-      <ReceiverAvenueName>".$ReceiverAvenueName."</ReceiverAvenueName>
-      <ReceiverStreetName>".$ReceiverStreetName."</ReceiverStreetName>
-      <PayorTypeCode>".$PayorTypeCode."</PayorTypeCode>
-      <IsWorldWide>".$IsWorldWide."</IsWorldWide>
-      <IsCod>".$IsCod."</IsCod>
-      <UnitID>".$UnitID."</UnitID>
+      <TradingWaybillNumber>".$this->TradingWaybillNumber."</TradingWaybillNumber>
+      <InvoiceNumber>".$this->InvoiceNumber."</InvoiceNumber>
+      <ReceiverName>".$this->ReceiverName."</ReceiverName>
+      <ReceiverAddress>".$this->ReceiverAddress."</ReceiverAddress>
+      <ReceiverPhone1>".$this->ReceiverPhone1."</ReceiverPhone1>
+      <ReceiverPhone2>".$this->ReceiverPhone2."</ReceiverPhone2>
+      <ReceiverPhone3>".$this->ReceiverPhone3."</ReceiverPhone3>
+      <ReceiverCityName>".$this->ReceiverCityName."</ReceiverCityName>
+      <ReceiverTownName>".$this->ReceiverTownName."</ReceiverTownName>
+      <VolumetricWeight>".$this->VolumetricWeight."</VolumetricWeight>
+      <Weight>".$this->Weight."</Weight>
+      <PieceCount>".$this->PieceCount."</PieceCount>
+      <SpecialField1>".$this->SpecialField1."</SpecialField1>
+      <SpecialField2>".$this->SpecialField2."</SpecialField2>
+      <SpecialField3>".$this->SpecialField3."</SpecialField3>
+      <CodAmount>".$this->CodAmount."</CodAmount>
+      <CodCollectionType>".$this->CodCollectionType."</CodCollectionType>
+      <CodBillingType>".$this->CodBillingType."</CodBillingType>
+      <IntegrationCode>".$this->IntegrationCode."</IntegrationCode>
+      <Description>".$this->Description."</Description>
+      <TaxNumber>".$this->TaxNumber."</TaxNumber>
+      <TtDocumentId>".$this->TtDocumentId."</TtDocumentId>
+      <TaxOffice>".$this->TaxOffice."</TaxOffice>
+      <PrivilegeOrder>".$this->PrivilegeOrder."</PrivilegeOrder>
+      <Country>".$this->Country."</Country>
+      <CountryCode>".$this->CountryCode."</CountryCode>
+      <CityCode>".$this->CityCode."</CityCode>
+      <TownCode>".$this->TownCode."</TownCode>
+      <ReceiverDistrictName>".$this->ReceiverDistrictName."</ReceiverDistrictName>
+      <ReceiverQuarterName>".$this->ReceiverQuarterName."</ReceiverQuarterName>
+      <ReceiverAvenueName>".$this->ReceiverAvenueName."</ReceiverAvenueName>
+      <ReceiverStreetName>".$this->ReceiverStreetName."</ReceiverStreetName>
+      <PayorTypeCode>".$this->PayorTypeCode."</PayorTypeCode>
+      <IsWorldWide>".$this->IsWorldWide."</IsWorldWide>
+      <IsCod>".$this->IsCod."</IsCod>
+      <UnitID>".$this->UnitID."</UnitID>
       <PieceDetails>
         <PieceDetail xsi:nil='true' />
         <PieceDetail xsi:nil='true' />
         </PieceDetails>
-        <SenderAccountAddressId>".$SenderAccountAddressId."</SenderAccountAddressId>
+        <SenderAccountAddressId>".$this->SenderAccountAddressId."</SenderAccountAddressId>
         </Order>";
       }
 
@@ -405,9 +413,7 @@ ini_set("soap.wsdl_cache_enabled", "0");
   class Orders{
 
     public $orders = array();
-    public function check(){
-      echo "check one";
-    }
+
     public function __construct(){
 
       $this->orders[] = new Order();
@@ -417,7 +423,7 @@ ini_set("soap.wsdl_cache_enabled", "0");
     public function generate($username,$password){ // Generate request to send server
       $value ="<SetOrder xmlns='http://tempuri.org/'>
                <orderInfo>";
-      foreach ($orders as $order) {
+      foreach ($this->orders as $order) {
           $value .= $order->generate($username,$password);
       }
       $value.="</orderInfo>
@@ -427,10 +433,17 @@ ini_set("soap.wsdl_cache_enabled", "0");
       return $value;
     }
     public function response($response){
+      /*
+        foreach($response->SetOrderResult as $result){
+          echo "<br><br>||" . $result->OrderResultInfo->ResultMessage;
+        }
+      */
+
         $i = 0;
-        foreach($orders as $order){
-          $order->response($response->SetOrderResult->OrderResultInfo[i]);//if xml is not array will give error
-          $i++;
+        foreach($this->orders as $order){
+          echo "<br>".$i.":::::<br>".$response->SetOrderResult->OrderResultInfo->ResultMessage."<br>";
+          //$order->response($response->SetOrderResult->OrderResultInfo[$i]);//if xml is not array will give error
+          echo $i++;
         }
     }
 };
@@ -451,9 +464,8 @@ class ArasKargo {
   }
 
   public function __construct(){
-    $client = new SoapClient("http://customerservicestest.araskargo.com.tr/arascargoservice/arascargoservice.asmx?wsdl");
-    $orders = new Orders;
-    echo "construc";
+    $this->client = new SoapClient("http://customerservicestest.araskargo.com.tr/arascargoservice/arascargoservice.asmx?wsdl");
+    $this->orders = new Orders;
   }
 
   private $request_header ="POST /arascargoservice/arascargoservice.asmx HTTP/1.1
@@ -462,7 +474,7 @@ class ArasKargo {
     Content-Length: length
     SOAPAction: 'http://tempuri.org/";
 
-    private $request_start = "'
+  private $request_start = "'
     <?xml version='1.0' encoding='utf-8'?>
     <soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
     <soap:Body>";
@@ -478,19 +490,17 @@ class ArasKargo {
       $request .=  $this->orders->generate($this->username,$this->password);
       $request .=  $this->request_end;
       $response =  $this->client->SetOrder($request);
-
-      $response1 = str_replace("<soap:Body>", "", $response);
-      $response2 = str_replace("</soap:Body>", "", $response1);
-      $xml = simplexml_load_string($response2);
-      $this->orders->response($xml->SetOrderResponse);
+      var_dump($response);
+      //$response1 = str_replace("<soap:Body>", "", $response);
+      //$response2 = str_replace("</soap:Body>", "", $response1);
+      //$xml = simplexml_load_string($response);
+      $this->orders->response($response);
 
   }
   //SetOrder END
 
 
 }
-
-echo "oldu";
 
 /**
 
